@@ -7,18 +7,27 @@ the goal is to display data from the ProductHunter API on a Angular front
 
 ## install
 cd back
+
 npm install 
 
+
 cd ..
+
 cd my-app
+
 npm install
 
 ## start 
 cd back
+
 npm start
 
+
+
 cd ..
+
 cd my-app
+
 ng serve --open
 
 

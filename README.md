@@ -15,11 +15,11 @@ npm install
 
 ## start 
 cd back
-node server.js
+npm start
 
 cd ..
 cd my-app
-ng -serve
+ng serve --open
 
 
 ## FAQ
@@ -35,6 +35,9 @@ front running but no data appearing ?
 -> if still not working, check api error message, the api rate might be excedeed in which it is required to wait 
 
 
+## additional info
+
+-> all front is mostly comprised of one component : "heroes"
 
 
 

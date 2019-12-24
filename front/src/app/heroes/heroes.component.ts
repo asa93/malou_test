@@ -11,29 +11,36 @@ import { HeroService } from '../hero.service';
 export class HeroesComponent implements OnInit {
   product = null
   test = null;
-  date = new Date();
+  afterDate = new Date();
+  beforeDate = null;
   constructor(private heroService: HeroService) {
     
    }
    
    refresh(){
      console.log("refreshing...")
-     this.getProducts(this.date.toISOString())
+     
+     this.getProducts(this.afterDate === null ? null : this.afterDate.toISOString(),
+                    this.beforeDate === null ? null : this.beforeDate.toISOString())
    }
 
-   dateChange(e){
-     this.date = e.target.value
-     console.log("date changed ! ", this.date.toISOString());
+   dateChange(dateName, e){
+     if(dateName === 'afterDate')
+      this.afterDate = e.target.value
+    if(dateName === 'beforeDate')
+      this.beforeDate = e.target.value
+
+     console.log(dateName, "changed ! ", e.target.value);
 
    }
 
-  getProducts(date): void {
-    this.heroService.getProducts(date)
+  getProducts(afterDate, beforeDate): void {
+    this.heroService.getProducts(afterDate,beforeDate)
     .subscribe(test => { 
       this.product = test} );
   }
   ngOnInit() {
-    this.getProducts(null);
+    this.getProducts(null,null);
   }
 
 }

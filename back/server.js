@@ -27,9 +27,11 @@ app.get("/getProducts", cors(), (req, response)=>{
 	console.log(req.query)
 
 
-let postedAfter = params.date !== "null" ? params.date : "2019-12-23T07:00:00Z";
+let postedAfter = params.afterDate !== "null" && params.afterDate !== undefined ? params.afterDate : "2019-12-01T00:00:00Z";
+let postedBefore = params.beforeDate !== "null" && params.beforeDate !== undefined ? params.beforeDate : (new Date()).toISOString();
+
 let body = {
-        query : `{ posts( postedAfter : "`+ postedAfter +`"  , )  
+        query : `{ posts( postedAfter : "`+ postedAfter +`"  , postedBefore : "`+ postedBefore +`" )  
                     {  edges{node{ name, id,  createdAt, url, thumbnail    {url}, description, commentsCount, website   }},totalCount } 
                  }`
     	}

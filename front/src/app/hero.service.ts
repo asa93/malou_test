@@ -25,8 +25,8 @@ export class HeroService {
     };
   }
 
-  getProducts (date): Observable<""> {
-    return this.http.get<"">(this.apiUrl+"/getProducts?date="+date)
+  getProducts (afterDate,beforeDate): Observable<""> {
+    return this.http.get<"">(this.apiUrl+"/getProducts?afterDate="+afterDate+"&beforeDate="+beforeDate)
     .pipe(
       catchError(this.handleError<"">('getHeroes', ""))
     );
